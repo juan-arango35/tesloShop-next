@@ -26,7 +26,7 @@ const TopMenu = () => {
           Mujeres
         </Link>
         <Link
-          href={"/category/kid"}
+          href={"/category/kids"}
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-300"
         >
           Niños
