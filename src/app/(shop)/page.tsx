@@ -1,10 +1,9 @@
-
+import Title from "@/components/ui/title/Title";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Hola mundo</h1>
-  
-    </main>
+    <>
+      <Title title="Tienda" subTitle="Todos los Productos" className="mb-2"/>
+    </>
   );
 }

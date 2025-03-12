@@ -7,15 +7,14 @@ export const metadata: Metadata = {
 };
 
 export default function ShopLayout({
- children
+  children,
 }: {
- children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <main className=" min-h-screen">
-      <TopMenu/>
-        {children}
-    
+      <TopMenu />
+      <div className="px-0 sm:px-10">{children}</div>
     </main>
   );
 }
