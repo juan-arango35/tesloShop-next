@@ -1,4 +1,6 @@
-interface SeedProduct {
+import { Product } from "@/interfaces";
+
+/* interface SeedProduct {
     description: string;
     images: string[];
     inStock: number;
@@ -13,9 +15,9 @@ interface SeedProduct {
 
 type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
 type ValidTypes = 'shirts'|'pants'|'hoodies'|'hats';
-
+ */
 interface SeedData {
-    products: SeedProduct[],
+    products: Product[],
 }
 
 
