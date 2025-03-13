@@ -1,9 +1,10 @@
 import Link from "next/link";
+
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 
 const TopMenu = () => {
   return (
-    <div className="flex px-5 justify-between item-center w-full bg-gray-100">
+    <div className="flex px-5 justify-between item-center w-full bg-gray-100 relative">
       {/*   logo */}
       <div>
         <Link href={"/"}>
@@ -45,8 +46,13 @@ const TopMenu = () => {
             <IoCartOutline className="w-5 h-5" />
           </div>
         </Link>
-        
-        <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 ">Menu</button>
+
+        <button
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+         
+        >
+          Menu
+        </button>
       </div>
     </div>
   );
