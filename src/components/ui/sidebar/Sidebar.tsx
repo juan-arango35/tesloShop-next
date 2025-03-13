@@ -1,4 +1,6 @@
 "use client";
+import { useUIStore } from "@/store";
+import clsx from "clsx";
 import Link from "next/link";
 import {
   IoCloseCircleOutline,
@@ -12,22 +14,35 @@ import {
 } from "react-icons/io5";
 
 const Sidebar = () => {
+  const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
+  const OCultarPanelLateral = useUIStore((state) => state.closeSideMenu);
   return (
     <div>
-      {/*    color de fondo negro */}
-      <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
-      {/*    color de fondo negr */}
-      <div className="fade-in fixed top-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"></div>
+      {isSideMenuOpen && (
+        <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
+      )}
+
+      {isSideMenuOpen && (
+        <div
+          onClick={OCultarPanelLateral}
+          className="fade-in fixed top-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"
+        ></div>
+      )}
 
       {/*  SideMenu */}
       <nav
         //todo: efecto de ocultar
-        className="fixed p-5 right-0 top-0 w-[31.25rem] h-screen bg-white z-20 shadow-xl transform transition-all duration-300"
+        className={clsx(
+          "fixed p-5 right-0 top-0 w-[31.25rem] h-screen bg-white z-20 shadow-xl transform transition-all duration-300",
+          {
+            "translate-x-full": !isSideMenuOpen,
+          }
+        )}
       >
         <IoCloseCircleOutline
           size={50}
           className="absolute top-5 right-5 cursor-pointer"
-          onClick={() => OCultarPanelLateral()}
+          onClick={OCultarPanelLateral}
         />
         {/*    INput de la busqueda */}
         <div className="relative mt-14">

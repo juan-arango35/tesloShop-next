@@ -1,8 +1,11 @@
+"use client";
+import { useUIStore } from "@/store";
 import Link from "next/link";
 
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 
 const TopMenu = () => {
+  const openSideMenu = useUIStore((state) => state.openSideMenu);
   return (
     <div className="flex px-5 justify-between item-center w-full bg-gray-100 relative">
       {/*   logo */}
@@ -49,7 +52,7 @@ const TopMenu = () => {
 
         <button
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
-         
+          onClick={openSideMenu}
         >
           Menu
         </button>
