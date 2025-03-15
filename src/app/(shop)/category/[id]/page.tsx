@@ -1,42 +1,36 @@
-import ProductGridItem from "@/components/products/product-grid/ProductGridItem";
+import ProductGrid from "@/components/products/product-grid/ProductGrid";
 import Title from "@/components/ui/title/Title";
+import { Category } from "@/interfaces";
 import { initialData } from "@/seed/seed";
-import { notFound } from "next/navigation";
+
 
 interface Props {
   params: {
-    id: string;
+    id: Category;
   };
 }
 
 const CategoryPage = ({ params }: Props) => {
   const { id } = params;
-/* if (id !== "kid" || id !== "men" || id !== "women") {
-    notFound();
-  } */
-  const productosFiltrados = initialData;
+  const seedProducts = initialData.products;
+  const products = seedProducts.filter((product) => product.gender === id);
 
-  const productos = productosFiltrados.products.filter(
-    (product) => product.gender === id
-  );
+  const labels: Record<Category, string> = {
+    men: "Hombres",
+    women: "Mujeres",
+    kid: "Niños",
+    unisex: "para Todos",
+  };
 
-  let idAlterno = id;
-  if(id === "kid"){idAlterno = "niños"; } 
-  else if(id ==="men") {idAlterno = "hombres"; } 
-  else if(id ==="women") {idAlterno = "mujeres";}
-  else {notFound();}
-  
   return (
     <>
       <Title
-      title = {`Articulos para  ${idAlterno}`} 
-      className="mb-2"
+        title={`Articulos para ${labels[id]}`}
+        subTitle="Todos los Productos"
+        className="mb-2"
       />
-      <div className="grid grid-col-2 sm:grid-cols-3 gap-10 mb-10">
-        {productos.map((product) => (
-          <ProductGridItem key={product.slug} product={product} />
-        ))}
-      </div>
+
+      <ProductGrid products={products} />
     </>
   );
 };
